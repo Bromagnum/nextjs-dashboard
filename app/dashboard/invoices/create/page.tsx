@@ -3,10 +3,13 @@ import { customers } from "@/app/lib/placeholder-data";
 import Breadcrumbs from "@/app/ui/invoices/breadcrumbs";
 import Form from "@/app/ui/invoices/create-form";
 import React from "react";
+import { Metadata } from "next";
 
+export const metada: Metadata = {
+  title: "create invoice",
+};
 export default async function Page() {
-
-    const customers = await fetchCustomers()
+  const customers = await fetchCustomers();
   return (
     <main>
       <Breadcrumbs
@@ -22,6 +25,4 @@ export default async function Page() {
       <Form customers={customers} />
     </main>
   );
-};
-
-
+}

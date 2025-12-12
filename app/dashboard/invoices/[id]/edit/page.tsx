@@ -3,6 +3,11 @@ import Breadcrumbs from "@/app/ui/invoices/breadcrumbs";
 import { fetchCustomers, fetchInvoiceById } from "@/app/lib/data";
 import { id } from "zod/v4/locales";
 import { notFound } from "next/navigation";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "edit invoice",
+};
 
 export default async function Page(props: { params: Promise<{ id: string }> }) {
   const params = await props.params;
@@ -11,7 +16,7 @@ export default async function Page(props: { params: Promise<{ id: string }> }) {
     fetchInvoiceById(id),
     fetchCustomers(),
   ]);
-  
+
   if (!invoice) {
     notFound();
   }
